@@ -1,23 +1,28 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductList from './ProductList';
 import ProductApis from '../_utils/ProductApis';
 
-export default function ProductSection (){
+export default function ProductSection ()
+{
+  const [ productList, setProductList ] = useState( [] );
+
+  const getLatestProducts_ = () =>
+    {
+      ProductApis.getLatestProducts().then( res =>{
+        setProductList( res.data.data );
+      });
+  }
+  
   useEffect( () =>
   {
     getLatestProducts_()
   }, [] );
-  const getLatestProducts_ = () =>
-  {
-    ProductApis.getLatestProducts().then( res =>{
-      console.log( res.data.data ) 
-    });
-  }
+  
   return (
-    <div>
-      <ProductList />
+    <div className='px-10 md:px-20'>
+      <ProductList productList={productList} />
     </div>
   )
 }
