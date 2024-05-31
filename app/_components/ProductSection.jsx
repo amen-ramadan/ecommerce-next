@@ -22,6 +22,7 @@ export default function ProductSection ()
   
   return (
     <div className='px-10 md:px-20'>
+      <h2 className='text-lg my-4'>Our Latest Products</h2>
       <ProductList productList={productList} />
     </div>
   )
