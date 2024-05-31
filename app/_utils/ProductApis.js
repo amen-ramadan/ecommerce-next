@@ -3,4 +3,5 @@ import axiosClient from "./axiosClient";
 const getLatestProducts = () => axiosClient.get( "/products?populate=*" );
 const getProductById = (id) => axiosClient.get( `/products/${id}?populate=*`);
 
-export default { getLatestProducts, getProductById }
+const getProductsByCategory = (category) => axiosClient.get( `/products?filters[category][$eq]=${category}&populate=*`);
+export default { getLatestProducts, getProductById, getProductsByCategory }

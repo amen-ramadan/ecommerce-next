@@ -1,12 +1,14 @@
 import React from 'react'
 import  Image  from 'next/image';
-import  {List}  from 'lucide-react';
+import { List } from 'lucide-react';
+import Link from 'next/link'
 
 export default function ProductItem ( {product} )
 {
   console.log(product);
   return (
-    <div className='p-1 hover:border rounded-lg hover:shadow-md border-primary transition-all cursor-pointer'>
+    <Link className='p-1 hover:border rounded-lg hover:shadow-md border-primary transition-all cursor-pointer'
+      href={ `/productDetails/${ product?.id }` }>
       <Image src={ product?.attributes?.banner?.data?.attributes?.url }
         width={ 400 } height={ 350 } alt='banner-card'
         className='rounded-t-lg h-[170px] object-cover'
@@ -18,6 +20,6 @@ export default function ProductItem ( {product} )
       </div>
       <h2>${ product?.attributes?.price }</h2>
       </div>
-    </div>
+    </Link>
   )
 }
