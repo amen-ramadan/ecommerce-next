@@ -1,21 +1,43 @@
 'use client'
 
-import React from "react";
+import React, { useContext } from "react";
 import { AlertOctagon, BadgeCheck, ShoppingCart } from "lucide-react";
 import SkeletonProductInfo from "./SkeletonProductInfo";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import CartApis from "../../../_utils/CartApis";
+import { CartContext } from "../../../_context/CartContext";
 
 export default function ProductInfo ( { product } )
 {
   const { user } = useUser();
   const router = useRouter();
+  const { cart, setCart } = useContext( CartContext )
   const handleAddToCart = () => {
     if (!user) {
       router.push("/sign-in");
     } else
     {
-      alert("Added to cart")
+
+      // ال key التي اعتمدت عليها مثل username انت مكريتها من قبل في stapi
+      const data = {
+        data: {
+          username: user.fullName,
+          email: user.primaryEmailAddress.emailAddress,
+          products: [product?.id]
+        }
+      }
+      CartApis.addToCart(data).then(( res ) => {
+        console.log( 'cart created successfully' )
+        setCart( oldCart => [ ...oldCart,
+          {
+            id: res?.data?.data?.id,
+            product
+          }
+        ] )
+      }).catch(( err ) => {
+        console.log('error ', err)
+      })
     }
   }
   return (
