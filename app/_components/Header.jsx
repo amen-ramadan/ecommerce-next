@@ -6,42 +6,42 @@ import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../_context/CartContext";
 import CartApis from "../_utils/CartApis";
+import Cart from "./Cart";
 
 export default function Header ()
 {
   const { user } = useUser();
-
-  // هون نحنا بدنا نعمل كولينغ مع ال apis لحتى نجيب الايميل ولحتى نبعتو مع الطلب الخاص بجلب بيانات المنتجات الخاصة بالكارت الخاصة بهذا المنتج
-  useEffect( () =>
-  {
-    // اذا اليوزر موجود رح يبدء بعمل الاتصال او اذا اتغير اليوزر رح يرجع يعمل اتصال
-    user && getCartItems();
-  }, [ user ] );
-  
-
-  const getCartItems = () =>
-  {
-    CartApis.getUserCartItems( user.primaryEmailAddress.emailAddress ).then( ( res ) =>
-    {
-      console.log( 'respose from cart items', res?.data?.data );
-      res?.data?.data?.forEach(  item  =>
-      {
-        setCart( (oldCart) => [ ...oldCart,
-          {
-            id: item?.id,
-            product: item?.attributes?.products?.data[0]
-          }
-        ] )
-      } )
-    })
-  }
-
   const [loggedIn, setLoggedIn] = useState( false );
+  const [openCart, setOpenCart] = useState( false );
   const {cart, setCart} = useContext(CartContext)
   useEffect( () =>
   {
     setLoggedIn( window.location.href.toString().includes( 'sign-in' ) );
   }, [] );
+  // هون نحنا بدنا نعمل كولينغ مع ال apis لحتى نجيب الايميل ولحتى نبعتو مع الطلب الخاص بجلب بيانات المنتجات الخاصة بالكارت الخاصة بهذا المنتج
+  useEffect( () =>
+    {
+      // اذا اليوزر موجود رح يبدء بعمل الاتصال او اذا اتغير اليوزر رح يرجع يعمل اتصال
+      user && getCartItems();
+    }, [ user ] );
+    
+  
+    const getCartItems = () =>
+    {
+      CartApis.getUserCartItems( user.primaryEmailAddress.emailAddress ).then( ( res ) =>
+      {
+        console.log( 'respose from cart items', res?.data?.data );
+        res?.data?.data?.forEach(  item  =>
+        {
+          setCart( (oldCart) => [ ...oldCart,
+            {
+              id: item?.id,
+              product: item?.attributes?.products?.data[0]
+            }
+          ] )
+        } )
+      })
+    }
   return !loggedIn && (
     <div>
       <header className="bg-white">
@@ -122,8 +122,10 @@ export default function Header ()
                 </div>
 
                 : <div className="flex items-center gap-5">
+                  <span className="flex gap-1 cursor-pointer">
+                  <ShoppingCart onClick={() => setOpenCart(!openCart)} /> ({ cart?.length })</span>
                   <UserButton afterSignOutUrl="/" />
-                  <span className="flex gap-1 cursor-pointer"><ShoppingCart/> ({cart?.length})</span>
+                  { openCart && <Cart /> }
                   
                 </div>
               
