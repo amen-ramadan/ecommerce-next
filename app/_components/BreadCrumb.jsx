@@ -3,7 +3,6 @@ import React from "react";
 
 export default function BreadCrumb ( { path } )
 {
-  console.log( "path", path );
   return (
     <nav aria-label="Breadcrumb" className="flex">
       <ol className="flex overflow-hidden rounded-lg border border-gray-200 text-gray-600">

@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 export default function ProductItem ( {product} )
 {
-  console.log(product);
   return (
     <Link className='p-1 hover:border rounded-lg hover:shadow-md border-primary transition-all cursor-pointer'
       href={ `/productDetails/${ product?.id }` }>

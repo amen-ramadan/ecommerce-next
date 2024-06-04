@@ -1,8 +1,23 @@
+'use client'
+
 import React from "react";
 import { AlertOctagon, BadgeCheck, ShoppingCart } from "lucide-react";
 import SkeletonProductInfo from "./SkeletonProductInfo";
+import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
-export default function ProductInfo({ product }) {
+export default function ProductInfo ( { product } )
+{
+  const { user } = useUser();
+  const router = useRouter();
+  const handleAddToCart = () => {
+    if (!user) {
+      router.push("/sign-in");
+    } else
+    {
+      alert("Added to cart")
+    }
+  }
   return (
     <div>
       { product?.attributes?.banner?.data?.attributes?.url ? (
@@ -28,7 +43,8 @@ export default function ProductInfo({ product }) {
           ${product?.attributes?.price}
         </p>
 
-        <button className="text-white rounded-md flex gap-2 hover:bg-teal-600 p-3  bg-primary">
+          <button className="text-white rounded-md flex gap-2 hover:bg-teal-600 p-3  bg-primary"
+          onClick={handleAddToCart}>
           {" "}
           <ShoppingCart />
           Add to cart

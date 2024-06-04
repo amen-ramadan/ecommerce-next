@@ -1,8 +1,20 @@
-import Image from "next/image";
-import React from "react";
+'use client'
 
-export default function Header() {
-  return (
+import { UserButton, useUser } from "@clerk/nextjs";
+import { ShoppingCart } from "lucide-react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+
+export default function Header ()
+{
+  const { user } = useUser();
+  const [loggedIn, setLoggedIn] = useState( false );
+  
+  useEffect( () =>
+  {
+    setLoggedIn( window.location.href.toString().includes( 'sign-in' ) );
+  }, [] );
+  return !loggedIn && (
     <div>
       <header className="bg-white">
         <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8 shadow-md">
@@ -14,7 +26,7 @@ export default function Header() {
                 <li>
                   <a
                     className="text-gray-500 transition hover:text-gray-500/75"
-                    href="#"
+                    href="/"
                   >
                     {" "}
                     Home{" "}
@@ -64,21 +76,30 @@ export default function Header() {
             </nav>
 
             <div className="flex items-center gap-4">
+              { !user ? 
               <div className="sm:flex sm:gap-4">
                 <a
                   className="block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-500"
-                  href="#"
+                  href="/sign-in"
                 >
                   Login
                 </a>
 
                 <a
                   className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-primary transition hover:text-teal-500/75 sm:block"
-                  href="#"
+                  href="sign-in"
                 >
                   Register
                 </a>
-              </div>
+                </div>
+
+                : <div className="flex items-center gap-5">
+                  <UserButton afterSignOutUrl="/" />
+                  <span className="flex gap-1 cursor-pointer"><ShoppingCart/> (0)</span>
+                  
+                </div>
+              
+            }
 
               <button className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
                 <span className="sr-only">Toggle menu</span>
