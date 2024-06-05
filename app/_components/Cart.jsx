@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { CartContext } from '../_context/CartContext'
 import Link from 'next/link'
 function Cart() {
-	const { cart, setcart } = useContext(CartContext)
+	const { cart, setCart } = useContext(CartContext)
 	return (
 		<div className='h-[300px] w-[250px]
     bg-gray-100 z-10 rounded-md border shadow-sm
