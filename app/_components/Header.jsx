@@ -30,7 +30,6 @@ export default function Header ()
     {
       CartApis.getUserCartItems( user.primaryEmailAddress.emailAddress ).then( ( res ) =>
       {
-        console.log( 'respose from cart items', res?.data?.data );
         res?.data?.data?.forEach(  item  =>
         {
           setCart( (oldCart) => [ ...oldCart,

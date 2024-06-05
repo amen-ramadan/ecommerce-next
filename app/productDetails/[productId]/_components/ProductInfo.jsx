@@ -28,7 +28,6 @@ export default function ProductInfo ( { product } )
         }
       }
       CartApis.addToCart(data).then(( res ) => {
-        console.log( 'cart created successfully' )
         setCart( oldCart => [ ...oldCart,
           {
             id: res?.data?.data?.id,
