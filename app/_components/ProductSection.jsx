@@ -12,6 +12,7 @@ export default function ProductSection ()
     {
       ProductApis.getLatestProducts().then( res =>{
         setProductList( res.data.data );
+        console.log( res );
       });
   }
   

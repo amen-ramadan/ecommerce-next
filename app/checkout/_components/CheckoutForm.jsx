@@ -35,6 +35,7 @@ const CheckoutForm = ({ amount }) => {
 			handleError(submitError);
 			return;
 		}
+		Math.round(amount)
 		const res = await fetch('api/create-intent', {
 			method: 'POST',
 			body: JSON.stringify({
