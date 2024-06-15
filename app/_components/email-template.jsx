@@ -24,7 +24,7 @@ export const EmailTemplate = ({
 		<Body style={main}>
 			<Container style={container}>
 				<Img
-					src='https://res.cloudinary.com/ddfzikgiz/image/upload/v1704687428/itelm_ryakt_f_50_dqyqh_e31f29dc71.png'
+					src='https://res.cloudinary.com/doq7ymahw/image/upload/v1716917568/samples/cup-on-a-table.jpg'
 					width="420"
 					height="300"
 					alt="Koala"
@@ -32,10 +32,10 @@ export const EmailTemplate = ({
 				/>
 				<Text style={paragraph}>Hi {body.fullName},</Text>
 				<Text style={paragraph}>
-					Thank you purchasing on Sleem Tech Ecommerce. Click on Below download button to download the all digital content
+					Thank you purchasing on amen rm Ecommerce. Click on Below download button to download the all digital content
 				</Text>
 				<Section style={btnContainer}>
-					<Button pX={12} pY={12}
+					<Button px={12} py={12}
 						style={{
 							padding: 5,
 							paddingLeft: 10,
@@ -50,10 +50,10 @@ export const EmailTemplate = ({
 				<Text style={paragraph}>
 					Best,
 					<br />
-					The Sleem Tech team
+					The amen ramadan team
 				</Text>
 				<Hr style={hr} />
-				<Text style={footer}>Subscribe to Ali Sleem</Text>
+				<Text style={footer}>Subscribe to amen ramadan</Text>
 			</Container>
 		</Body>
 	</Html>

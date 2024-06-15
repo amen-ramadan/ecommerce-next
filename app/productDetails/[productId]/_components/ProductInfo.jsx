@@ -52,10 +52,10 @@ export default function ProductInfo ( { product } )
         </p>
         <p className="text-[11px] text-gray-500 flex gap-2 mt-2 items-center">
           {" "}
-          {product?.attributes?.instantDelivery ? (
-            <BadgeCheck className="w-4 h-4 text-gray-500" />
+          {product?.attributes?.instansDelivery ? (
+            <BadgeCheck className=" text-green-500" />
           ) : (
-            <AlertOctagon />
+            <AlertOctagon className=" text-gray-500"/>
           )}
           Eligible For Instant Delivery
         </p>
