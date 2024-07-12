@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project: ecommerce-courses
 
-## Getting Started
+![Alt1](./screenshot-ecommerce/1.png)
+![Alt2](./screenshot-ecommerce/2.png)
+![Alt3](./screenshot-ecommerce/3.png)
+![Al4](./screenshot-ecommerce/4.png)
+![Al5](./screenshot-ecommerce/5.png)
+![Alt6](./screenshot-ecommerce/6.png)
+![Al7](./screenshot-ecommerce/7.png)
 
-First, run the development server:
+## Description:
+A comprehensive e-commerce project built from scratch using React and TypeScript. The project features a robust backend relying on a CMS system and Stripe for payment processing. Below are the key components and functionalities of the project:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Backend:
+- **CMS System**: Utilizes Stripe for payment processing.
+- **Databases**: Built using PostgreSQL and deployed on Render.
+- **Cloud Services**: Integrates with Cloudinary for managing product images.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Frontend:
+- **Product Browsing**: Products are fetched from the database and displayed, leveraging cloud services.
+- **Order Processing**: Users can place orders, and the order data is stored in the database. The page can be refreshed without losing order data.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Payment System:
+- **Stripe Integration**: Secure payment processing with data validation.
+- **Email Notifications**: Uses the Resend library to send order confirmation emails containing purchase details.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### User Management:
+- **Authentication**: Includes login and registration functionality.
+- **Authorization**: Middleware checks for user permissions to ensure secure access control.
 
-## Learn More
+### Note:
+- **Demo Availability**: The demo may not be available as the free period provided by Render for the hosted databases has expired.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project showcases a fully functional e-commerce platform with a range of features and integrations, making it a solid example of a modern web application.
